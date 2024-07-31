@@ -6,6 +6,8 @@ export default function AccountBalanceScreen() {
 
 
     return (
-        <View>Account Balance</View>
+        <View>
+            <Text>Account Balance</Text>
+        </View>
     );
 }
