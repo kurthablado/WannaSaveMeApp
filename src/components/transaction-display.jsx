@@ -7,8 +7,12 @@ function TransactionDisplay({ transactions }) {
     return (
         <View>
             <Text>Transactions</Text>
+            
+            {/* If there are no transactions, returns 'No Transactions Yet' */}
             {transactions.length === 0 ? (<Text>No transactions yet</Text>
             ) : (
+
+                // Otherwise, maps through the transactions and displays each transaction
                 transactions.map((transaction, index) => (
                     <View key={index}>
                         <Text>Amount: ${transaction.amount}</Text>
@@ -23,15 +27,3 @@ function TransactionDisplay({ transactions }) {
 
 export default TransactionDisplay;
 
-// Pass prop to Transaction component
-// export default function TransactionsScreen( {TransactionDisplay}) {
-
-//     return(
-//         <SafeAreaView>
-//             <FlatList
-//             data={TransactionDisplay}
-//             renderItem={ ({item}) => <Transactions transaction={item} /> }
-//             keyExtractor={ item => item.id} />
-//         </SafeAreaView>
-//     );
-// }

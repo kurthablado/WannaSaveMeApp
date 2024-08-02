@@ -25,10 +25,12 @@ export default function TransactionsScreen() {
             <Text>Transactions</Text>
             <Text>View Transactions Here</Text>
 
+            {/* Component to add a new transaction */}
             <View>
                 <TransactionsForm handleNewTransaction={submitTransaction} />
             </View>
 
+            {/* Displays transactions */}
             <View>
                 <TransactionsDisplay transactions={transactions} />
             </View>
