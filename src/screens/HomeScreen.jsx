@@ -9,6 +9,7 @@ import TransactionsScreen from './TransactionsScreen';
 import { mainStyles } from '../assets/styles/styles';
 import TransactionDisplay from '../components/transaction-display';
 import BudgetButton from '../components/monthly-budget';
+import AccountBalanceButton from '../components/account-balance';
 
 
 export default function HomeScreen() {
@@ -20,7 +21,7 @@ export default function HomeScreen() {
             </View>
 
             <View>
-                <Text>Amount Spent</Text>
+                <AccountBalanceButton />
                 <Text>Your Account Balance</Text>
             </View>
 
