@@ -29,6 +29,7 @@ export default function CategoryDropdown() {
                     items={items}
                     setOpen={setOpen}
                     setValue={setValue}
+                    setItems={setItems}
                     placeholder={'Choose a category.'}
                 />
             </View>
