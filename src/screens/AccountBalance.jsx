@@ -1,7 +1,7 @@
 // Account Balance Screen
 
 import React, { useState } from "react";
-import { Button, Image, SafeAreaView, Text, View } from "react-native";
+import { Button, Image, SafeAreaView, Text, View, TextInput, Alert, Stylesheet } from "react-native";
 import { mainStyles } from "../assets/styles/styles";
 import TransactionsForm from "../components/transaction-form";
 
