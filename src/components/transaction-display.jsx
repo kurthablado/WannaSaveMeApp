@@ -1,13 +1,12 @@
 import { FlatList, View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Transactions from "./transaction-form";
+import { mainStyles } from "../assets/styles/styles";
 
 // Display a list of transactions
 function TransactionDisplay({ transactions }) {
     return (
         <View>
-            <Text>Transactions</Text>
-            
             {/* If there are no transactions, returns 'No Transactions Yet' */}
             {transactions.length === 0 ? (<Text>No transactions yet</Text>
             ) : (

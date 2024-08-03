@@ -41,20 +41,20 @@ export default function Transactions( {handleNewTransaction} ) {
     return (
         <SafeAreaView>
             <View style={{ padding: 20 }}>
-                <Text>Transactions</Text>
                 <Text>Amount: </Text>
                 <TextInput
                     keyboardType="numeric"
                     onChangeText={setAmount}
                     value={amount}
                     placeholder="Enter amount"
+                    style={mainStyles.input}
                 />
                 <View style={{ margin: 20, padding: 20 }}>
                     <Text>Date: </Text>
                     <DatePicker date={date} onDateChange={setDate} />
                 </View>
-                <View style={{ margin: 20, padding: 20 }}>
-                    <Text>Category: </Text>
+                <View style={{ margin: 30, padding: 30 }}>
+                    <Text style={{margin: 10, padding: 10 }}> Category: </Text>
                     <CategoryDropdown category={category} onPress={setCategory} />
                 </View>
                 <Pressable onPress={handleSubmit} style={mainStyles.btn}>

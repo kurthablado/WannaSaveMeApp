@@ -4,31 +4,17 @@ import { Button, Image, SafeAreaView, Text, View } from "react-native";
 import TransactionsForm from "../components/transaction-form";
 import TransactionsDisplay from "../components/transaction-display";
 import { useState } from "react";
+import { mainStyles } from "../assets/styles/styles";
 
 const transactionData = [];
 
 export default function TransactionsScreen() {
-
     
     const [transactions, setTransactions] = useState(transactionData);
 
-    
-    // Add new transaction to the list
-    const submitTransaction = (newTransaction) => {
-
-        // Copies the existing transactions list and adds on new transactions
-        setTransactions([...transactions, newTransaction]);
-    }
-
     return (
         <SafeAreaView>
-            <Text>Transactions</Text>
-            <Text>View Transactions Here</Text>
-
-            {/* Component to add a new transaction */}
-            <View>
-                <TransactionsForm handleNewTransaction={submitTransaction} />
-            </View>
+            <Text style={mainStyles.subheading}>Transaction History</Text>
 
             {/* Displays transactions */}
             <View>

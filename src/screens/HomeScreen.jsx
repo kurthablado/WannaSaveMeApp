@@ -6,14 +6,18 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AccountBalance from './AccountBalance';
 import TransactionsScreen from './TransactionsScreen';
+import { mainStyles } from '../assets/styles/styles';
 
 
 export default function HomeScreen() {
 
+    
+
     return(
         <SafeAreaView>
             <View>
-                <Text>Wanna Save Me - Expense Tracker</Text>
+                <Text style={mainStyles.heading}>Welcome to your portal to savings!</Text>
+                <Text style={mainStyles.subheading}>Choose an option below</Text>
             </View>
         </SafeAreaView>
     );
