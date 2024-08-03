@@ -4,7 +4,10 @@ import Transactions from "./transaction-form";
 import { mainStyles } from "../assets/styles/styles";
 
 // Display a list of transactions
-function TransactionDisplay({ transactions }) {
+function TransactionDisplay({ transactions = [] }) {
+
+const recentTransactions = transactions.slice(0, 5);
+
     return (
         <View>
             {/* If there are no transactions, returns 'No Transactions Yet' */}
@@ -12,7 +15,7 @@ function TransactionDisplay({ transactions }) {
             ) : (
 
                 // Otherwise, maps through the transactions and displays each transaction
-                transactions.map((transaction, index) => (
+                recentTransactions.map((transaction, index) => (
                     <View key={index}>
                         <Text>Amount: ${transaction.amount}</Text>
                         <Text>Date: {new Date(transaction.date).toDateString()}</Text>

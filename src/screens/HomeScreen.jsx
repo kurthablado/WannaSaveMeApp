@@ -22,11 +22,11 @@ export default function HomeScreen() {
 
             <View>
                 <AccountBalanceButton />
-                <Text>Your Account Balance</Text>
+                <Text>Expenses</Text>
             </View>
 
             <View>
-                <Text>Recent Transactions</Text>
+                <TransactionDisplay />
             </View>
         </SafeAreaView>
     );
