@@ -4,6 +4,9 @@ import { useState } from "react";
 import { Alert, Pressable, Text, TextInput, View, } from "react-native";
 import DatePicker from "react-native-date-picker";
 import { SafeAreaView } from "react-native-safe-area-context";
+import CategoryDropdown from "./dropdown";
+import { StyleSheet } from "react-native";
+import { mainStyles } from "../assets/styles/styles";
 
 export default function Transactions( {handleNewTransaction} ) {
     
@@ -46,15 +49,15 @@ export default function Transactions( {handleNewTransaction} ) {
                     value={amount}
                     placeholder="Enter amount"
                 />
-                <Text>Date: </Text>
-                <DatePicker date={date} onDateChange={setDate} />
-                <Text>Category: </Text>
-                <TextInput
-                    onChangeText={setCategory}
-                    value={category}
-                    placeholder="Enter category"
-                />
-                <Pressable onPress={handleSubmit} style={{ marginTop: 20 }}>
+                <View style={{ margin: 20, padding: 20 }}>
+                    <Text>Date: </Text>
+                    <DatePicker date={date} onDateChange={setDate} />
+                </View>
+                <View style={{ margin: 20, padding: 20 }}>
+                    <Text>Category: </Text>
+                    <CategoryDropdown category={category} onPress={setCategory} />
+                </View>
+                <Pressable onPress={handleSubmit} style={mainStyles.btn}>
                     <Text>Add Transaction</Text>
                 </Pressable>
             </View>
