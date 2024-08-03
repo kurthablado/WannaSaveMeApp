@@ -16,7 +16,6 @@ export default function HomeScreen() {
     return(
         <SafeAreaView>
             <View>
-                <Text>My Budget</Text>
                 <BudgetButton />
             </View>
 
