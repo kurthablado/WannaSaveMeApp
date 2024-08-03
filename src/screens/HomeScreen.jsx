@@ -21,9 +21,6 @@ export default function HomeScreen() {
 
             <View>
                 <Text>Amount Spent</Text>
-            </View>
-
-            <View>
                 <Text>Your Account Balance</Text>
             </View>
 

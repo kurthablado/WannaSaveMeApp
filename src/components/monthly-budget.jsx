@@ -93,10 +93,13 @@ const BudgetButton = () => {
       greenButton: {
         backgroundColor: 'green',
         padding: 10,
+        margin: 10,
         borderRadius: 5,
-        width: '100%',
+        width: 350,
         alignItems: 'center',
         height: 150,
+        justifyContent: 'center',
+        alignSelf: 'center',
       },
 
       greenButtonText: {
