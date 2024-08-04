@@ -7,17 +7,26 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AccountBalance from './AccountBalance';
 import TransactionsScreen from './TransactionsScreen';
 import { mainStyles } from '../assets/styles/styles';
+import TransactionDisplay from '../components/transaction-display';
+import BudgetButton from '../components/monthly-budget';
+import AccountBalanceButton from '../components/account-balance';
 
 
 export default function HomeScreen() {
 
-    
-
     return(
         <SafeAreaView>
             <View>
-                <Text style={mainStyles.heading}>Welcome to your portal to savings!</Text>
-                <Text style={mainStyles.subheading}>Choose an option below</Text>
+                <BudgetButton />
+            </View>
+
+            <View>
+                <AccountBalanceButton />
+                <Text>Expenses</Text>
+            </View>
+
+            <View>
+                <TransactionDisplay />
             </View>
         </SafeAreaView>
     );
