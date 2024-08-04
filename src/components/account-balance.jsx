@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, Modal, TextInput } from "react-native";
 
 export default function AccountBalanceButton() {
     const [balance, setBalance] = useState('');
