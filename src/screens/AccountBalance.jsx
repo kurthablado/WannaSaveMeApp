@@ -37,30 +37,31 @@ export default function AccountBalanceScreen() {
 
     return (
         <SafeAreaView style={mainStyles.container}>
-            <FlatList ListHeaderComponent={
-                <>
-                    <Text style={mainStyles.heading}>Current Balance</Text>
-                    <Text style={mainStyles.balance}>${balance.toFixed(2)}</Text>
+            <FlatList
+                ListHeaderComponent={
+                    <>
+                        <Text style={mainStyles.heading}>Current Balance</Text>
+                        <Text style={mainStyles.balance}>${balance.toFixed(2)}</Text>
                     
-                    /* Component to add a new transaction */
-                    <View>
-                        <TransactionsForm handleNewTransaction={handleAddExpense} />
-                    </View>
-                </>
-            }
+                        {/* Component to add a new transaction */}
+                        <View>
+                            <TransactionsForm handleNewTransaction={handleAddExpense} />
+                        </View>
+                    </>
+                }
 
-            //List of Transactions
-            data={transactions}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({ item }) => (
-                <View style={mainStyles.transaction}>
-                    <Text>{item.name}</Text>
-                    <Text>${item.amount.toFixed(2)}</Text>
-                    <Text>{item.date}</Text>
-                </View>
-            )}
-            ListEmptyComponent={<Text>No trasactions yet.</Text>}
-            contentContainerStyle={styles.flatListContainer}
+                //List of Transactions
+                data={transactions}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                    <View style={mainStyles.transaction}>
+                        <Text>{item.name}</Text>
+                        <Text>${item.amount.toFixed(2)}</Text>
+                        <Text>{item.date}</Text>
+                    </View>
+                )}
+                ListEmptyComponent={<Text>No trasactions yet.</Text>}
+                contentContainerStyle={styles.flatListContainer}
             />
         </SafeAreaView>
     );
