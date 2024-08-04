@@ -1,42 +1,73 @@
 // Account Balance Screen
 
 import React, { useState } from "react";
-import { Button, Image, SafeAreaView, Text, View } from "react-native";
+import { FlatList, SafeAreaView, Text, View, StyleSheet, ScrollView } from "react-native";
 import { mainStyles } from "../assets/styles/styles";
 import TransactionsForm from "../components/transaction-form";
 
 const transactionData = [];
 
 export default function AccountBalanceScreen() {
-
     const [balance, setBalance] = useState(0);
-    const [expenseName, setExpenseName] = useState("");
-    const [expenseAmount, setExpenseAmount] = useState("");
-    const [expenseDate, setExpenseDate] = useState("");
     const [transactions, setTransactions] = useState(transactionData);
 
-    const handleAddExpense = () => {
+    const handleAddExpense = (expenseName, expenseAmount, expenseDate) => {
+        const amount = parseFloat(expenseAmount);
+        if (isNaN(amount)) {
+            console.error("Invalid Amount:", expenseAmount);
+            return;
+        }
 
-        console.log("Add Expense:", { expenseName, expenseAmount, expenseDate });
+        const newTransaction = {
+            id: transactions.length + 1,
+            name: expenseName,
+            amount: amount,
+            date: expenseDate,
+        };
+        submitTransaction(newTransaction);
     };
-
-
     
     // Add new transaction to the list
     const submitTransaction = (newTransaction) => {
-
         // Copies the existing transactions list and adds on new transactions
         setTransactions([...transactions, newTransaction]);
-    }
+        setBalance(prevBalance => prevBalance + newTransaction.amount); // this will update the balance
+    };
 
     return (
-        <View>
+        <SafeAreaView style={mainStyles.container}>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
             <Text style={mainStyles.heading}>Current Balance</Text>
+            <Text style={mainStyles.balance}>${balance.toFixed(2)}</Text>
             
             {/* Component to add a new transaction */}
             <View>
-                <TransactionsForm handleNewTransaction={submitTransaction} />
+                <TransactionsForm handleNewTransaction={handleAddExpense} />
             </View>
-        </View>
+
+            {/*List of Transactions */}
+            <View style={styles.transactionList}>
+            <FlatList
+                data={transactions}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                    <View style={mainStyles.transaction}>
+                        <Text>{item.name}</Text>
+                        <Text>${item.amount.toFixed(2)}</Text>
+                        <Text>{item.date}</Text>
+                    </View>
+                )}
+                ListEmptyComponent={<Text>No trasactions yet.</Text>}
+                />
+                </View>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
+
+const styles = StyleSheet.create({
+    scrollContainer: {
+        flexGrow: 1,
+        justifyContent: 'space-between',
+    },
+});
