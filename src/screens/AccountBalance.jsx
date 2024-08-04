@@ -1,7 +1,7 @@
 // Account Balance Screen
 
 import React, { useState } from "react";
-import { Button, Image, SafeAreaView, Text, View } from "react-native";
+import { Button, Image, SafeAreaView, FlatList, Text, View } from "react-native";
 import { mainStyles } from "../assets/styles/styles";
 import TransactionsForm from "../components/transaction-form";
 import { StyleSheet } from "react-native";
@@ -37,31 +37,31 @@ export default function AccountBalanceScreen() {
 
     return (
         <SafeAreaView style={mainStyles.container}>
-            <ScrollView contentContainerStyle={styles.scrollContainer}>
-            <Text style={mainStyles.heading}>Current Balance</Text>
-            <Text style={mainStyles.balance}>${balance.toFixed(2)}</Text>
-            
-            {/* Component to add a new transaction */}
-            <View>
-                <TransactionsForm handleNewTransaction={handleAddExpense} />
-            </View>
-
-            {/*List of Transactions */}
-            <View style={styles.transactionList}>
-            <FlatList
-                data={transactions}
-                keyExtractor={(item) => item.id.toString()}
-                renderItem={({ item }) => (
-                    <View style={mainStyles.transaction}>
-                        <Text>{item.name}</Text>
-                        <Text>${item.amount.toFixed(2)}</Text>
-                        <Text>{item.date}</Text>
+            <FlatList ListHeaderComponent={
+                <>
+                    <Text style={mainStyles.heading}>Current Balance</Text>
+                    <Text style={mainStyles.balance}>${balance.toFixed(2)}</Text>
+                    
+                    /* Component to add a new transaction */
+                    <View>
+                        <TransactionsForm handleNewTransaction={handleAddExpense} />
                     </View>
-                )}
-                ListEmptyComponent={<Text>No trasactions yet.</Text>}
-                />
+                </>
+            }
+
+            //List of Transactions
+            data={transactions}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+                <View style={mainStyles.transaction}>
+                    <Text>{item.name}</Text>
+                    <Text>${item.amount.toFixed(2)}</Text>
+                    <Text>{item.date}</Text>
                 </View>
-            </ScrollView>
+            )}
+            ListEmptyComponent={<Text>No trasactions yet.</Text>}
+            contentContainerStyle={styles.flatListContainer}
+            />
         </SafeAreaView>
     );
 }
