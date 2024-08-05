@@ -42,5 +42,22 @@ export const mainStyles = StyleSheet.create({
         padding: 10,
         textAlign: 'center',
     },
-
+    label: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        margin: 10,
+        padding: 10,
+        textAlign: 'left',
+    },
+    transactionHistory: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        margin: 10,
+        padding: 10,
+        textAlign: 'center',
+        backgroundColor: 'gold',
+        borderColor: 'black',
+        borderWidth: 2,
+        border: 'solid',
+    },
 });

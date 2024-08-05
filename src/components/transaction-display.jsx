@@ -9,9 +9,9 @@ function TransactionDisplay({ transactions = [] }) {
 const recentTransactions = transactions.slice(0, 5);
 
     return (
-        <View>
+        <View style={TransactionDisplay}>
             {/* If there are no transactions, returns 'No Transactions Yet' */}
-            {transactions.length === 0 ? (<Text>No transactions yet</Text>
+            {transactions.length === 0 ? (<Text style={{margin: 10}}>No transactions yet</Text>
             ) : (
 
                 // Otherwise, maps through the transactions and displays each transaction
