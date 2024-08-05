@@ -1,32 +1,23 @@
-// Home Screen of Application
-
-import { NavigationContainer } from '@react-navigation/native';
-import { View, Text, Button } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import AccountBalance from './AccountBalance';
-import TransactionsScreen from './TransactionsScreen';
-import { mainStyles } from '../assets/styles/styles';
-import TransactionDisplay from '../components/transaction-display';
+import { useState } from "react";
+import { View, Text, SafeAreaView } from 'react-native';
 import BudgetButton from '../components/monthly-budget';
 import AccountBalanceButton from '../components/account-balance';
-
+import TransactionDisplay from '../components/transaction-display';
+import Transactions from '../components/transaction-form'; // Adjust import path if necessary
 
 export default function HomeScreen() {
+    const [transactions, setTransactions] = useState([]);
 
-    return(
-        <SafeAreaView>
-            <View>
+    const handleNewTransaction = (transaction) => {
+        setTransactions((prevTransactions) => [transaction, ...prevTransactions]);
+    };
+
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
+            <View style={{ flex: 1, padding: 10 }}>
                 <BudgetButton />
-            </View>
-
-            <View>
                 <AccountBalanceButton />
-                <Text>Expenses</Text>
-            </View>
-
-            <View>
-                <TransactionDisplay />
+                <TransactionDisplay transactions={transactions} style={{flex: 1, alignItems: 'centre'}}/>
             </View>
         </SafeAreaView>
     );

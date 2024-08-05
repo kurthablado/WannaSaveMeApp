@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 10,
         borderRadius: 5,
-        width: 175,
+        width: 350,
         alignItems: 'center',
         height: 150,
         justifyContent: 'center',
