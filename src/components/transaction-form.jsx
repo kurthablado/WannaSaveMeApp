@@ -41,7 +41,7 @@ export default function Transactions( {handleNewTransaction} ) {
     return (
         <SafeAreaView>
             <View style={{ padding: 20 }}>
-                <Text>Amount: </Text>
+                <Text style={mainStyles.label}>Amount: </Text>
                 <TextInput
                     keyboardType="numeric"
                     onChangeText={setAmount}
@@ -49,12 +49,12 @@ export default function Transactions( {handleNewTransaction} ) {
                     placeholder="Enter amount"
                     style={mainStyles.input}
                 />
-                <View style={{ margin: 20, padding: 20 }}>
-                    <Text>Date: </Text>
+                <View style={{ paddingBottom: 10}}>
+                    <Text style={mainStyles.label}>Date: </Text>
                     <DatePicker date={date} onDateChange={setDate} />
                 </View>
-                <View style={{ margin: 30, padding: 30 }}>
-                    <Text style={{margin: 10, padding: 10 }}> Category: </Text>
+                <View style={{ paddingBottom: 10 }}>
+                    <Text style={mainStyles.label}> Category: </Text>
                     <CategoryDropdown category={category} onPress={setCategory} />
                 </View>
                 <Pressable onPress={handleSubmit} style={mainStyles.btn}>

@@ -41,7 +41,7 @@ export default function AccountBalanceScreen() {
                 ListHeaderComponent={
                     <>
                         <Text style={mainStyles.heading}>Current Balance</Text>
-                        <Text style={mainStyles.balance}>${balance.toFixed(2)}</Text>
+                        <Text style={styles.balance}>${balance.toFixed(2)}</Text>
                     
                         {/* Component to add a new transaction */}
                         <View>
@@ -60,7 +60,7 @@ export default function AccountBalanceScreen() {
                         <Text>{item.date}</Text>
                     </View>
                 )}
-                ListEmptyComponent={<Text>No trasactions yet.</Text>}
+                ListEmptyComponent={<Text>No transactions yet.</Text>}
                 contentContainerStyle={styles.flatListContainer}
             />
         </SafeAreaView>
@@ -71,5 +71,10 @@ const styles = StyleSheet.create({
     scrollContainer: {
         flexGrow: 1,
         justifyContent: 'space-between',
+    },
+    balance: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 });
