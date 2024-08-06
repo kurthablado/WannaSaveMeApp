@@ -2,15 +2,12 @@
 
 import { Button, Image, SafeAreaView, Text, View } from "react-native";
 import TransactionsForm from "../components/transaction-form";
-import TransactionsDisplay from "../components/transaction-display";
+import TransactionDisplay from "../components/transaction-display";
 import { useState } from "react";
 import { mainStyles } from "../assets/styles/styles";
 
-const transactionData = [];
 
-export default function TransactionsScreen() {
-    
-    const [transactions, setTransactions] = useState(transactionData);
+export default function TransactionsScreen({transactions}) {
 
     return (
         <SafeAreaView>
@@ -18,7 +15,7 @@ export default function TransactionsScreen() {
 
             {/* Displays transactions */}
             <View>
-                <TransactionsDisplay transactions={transactions} />
+            <TransactionDisplay transactions={transactions} />
             </View>
         </SafeAreaView>
     );

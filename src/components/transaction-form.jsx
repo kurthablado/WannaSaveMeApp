@@ -5,36 +5,37 @@ import { Alert, Pressable, Text, TextInput, View, } from "react-native";
 import DatePicker from "react-native-date-picker";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CategoryDropdown from "./dropdown";
-import { StyleSheet } from "react-native";
 import { mainStyles } from "../assets/styles/styles";
 
-export default function Transactions( {handleNewTransaction} ) {
+
+export default function TransactionsForm({handleAddTransaction}) {
     
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState("");
     const [date, setDate] = useState(new Date());
     const [category, setCategory] = useState("");
-
-    // TODO:
-    // 1. Change category from input to dropdown
-    // 2. Styling
+    
 
     const handleSubmit = () => {
         const parsedAmount = parseFloat(amount);
         
         // Ensures a number is entered
-        if (isNaN(parsedAmount)) {
-            Alert("Please enter a number for the amount");
+        if (isNaN(parsedAmount) || parsedAmount <=0 ) {
+            Alert.alert("Invalid amount", "Please enter a valid amount");
             return;
         }
 
         let newTransaction = {
-            amount: amount,
-            date: date,
+            amount: parsedAmount,
+            date: date.toDateString(),
             category: category
         }
-        handleNewTransaction(newTransaction);
-        setAmount(0); // Clear input for amount
-        setCategory(''); // Clear input for category
+
+        
+        handleAddTransaction(newTransaction); // Add transaction to list
+       
+
+        setAmount(""); // Clear input for amount
+        setCategory(""); // Clear input for category
         setDate(new Date()); // Reset date to current date
     }
 
